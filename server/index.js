@@ -9,7 +9,11 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
 import {register} from "./controller/auth.js";
+import {createPost} from "./controllers/posts.js";
+import { verifytoken } from "./middleware/auth.js";
 
 /*config*/
 const __filename=fileURLToPath(import.meta.url);
@@ -37,11 +41,13 @@ const storage=multer.diskStorage({
 const upload=multer({storage});
 
 /*ROUTES WITH FILES*/
-app.post("/auth/register",upload.single("picture"),register);
+app.post("/auth/register",upload.single("picture"),verifytoken, register);
+app.post("/posts",verifytoken,upload.single("picture"),createPost);
 
 /*Routes*/
 app.use("/auth",authRoutes);
-
+app.use("/users",userRoutes);
+app.use("/posts",postRoutes);
 /*mongoose setup*/
 const PORT=3003||6001;
 mongoose.connect("mongodb+srv://sriram6132:APPLE@cluster0.s8r7sno.mongodb.net/?retryWrites=true&w=majority",{
