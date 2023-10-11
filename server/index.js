@@ -53,8 +53,8 @@ app.use("/auth",authRoutes);
 app.use("/users",userRoutes);
 app.use("/posts",postRoutes);
 /*mongoose setup*/
-const PORT=3003||6001;
-mongoose.connect("mongodb+srv://sriram6132:APPLE@cluster0.s8r7sno.mongodb.net/?retryWrites=true&w=majority",{
+const PORT=process.env.PORT||6001;
+mongoose.connect(process.env.URL,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
 }).then(()=>{

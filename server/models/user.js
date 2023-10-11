@@ -33,6 +33,7 @@ const Userschema= new mongoose.Schema({
     },
     location:String,
     occupation:String,
+    musicalprofession:String,
     viewedprofile:Number,
     impressions:Number,
 
