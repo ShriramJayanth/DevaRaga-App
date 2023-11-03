@@ -11,7 +11,7 @@ const LoginPage=()=>{
         <Typography
           fontWeight="bold"
           fontSize="32px"
-          color="primary"
+          color="#C70039"
         >
           DevaRaga
         </Typography>

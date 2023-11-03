@@ -84,7 +84,7 @@ const Form=()=>{
             {
                 method:"POST",
                 headers:{"content-type":"application/json"},
-                body:formData,
+                body:JSON.stringify(values),
             }
         );
         const loggedIn=await loggedInResponse.json();
@@ -173,6 +173,16 @@ const Form=()=>{
                         helperText={touched.occupation && errors.occupation}
                         sx={{gridColumn:"span 4"}}
                         />
+                        <TextField
+                        label="Musician"
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        value={values.musician}
+                        name="musician"
+                        error={Boolean(touched.musician) && Boolean(errors.musician)}
+                        helperText={touched.musician && errors.musician}
+                        sx={{gridColumn:"span 4"}}
+                        />
                         <Box
                          gridColumn="span 4"
                          border={`1px solid ${palette.neutral.medium}`}
@@ -189,12 +199,12 @@ const Form=()=>{
                             <Box
                               {...getRootProps()}
                               border={`2px dashed ${palette.primary.main}`}
-                              p="1 rem"  
+                              p="2 rem"  
                               sx={{"&:hover":{cursor:"pointer"}}}                          
                             >
                             <input{...getInputProps()}/>
                             {!values.pictures ?(
-                                <p>add Picture Here</p>
+                                <p><t/>Add Picture Here</p>
                             ):(
                                 <FlexBetween>
                                     <Typography>{values.picture.name}</Typography>
@@ -239,9 +249,9 @@ const Form=()=>{
                     sx={{
                         m:"2rem 0",
                         p:"1rem",
-                        backgroundColor:palette.primary.main,
+                        backgroundColor:'#C70039',
                         color:palette.background.alt,
-                        "&:hover":{color:palette.primary.main},
+                        "&:hover":{color:'#C70039'},
                     }}
                     >
                     {isLogin ? "LOGIN":"REGISTER"}
@@ -256,7 +266,7 @@ const Form=()=>{
                         color:palette.main,
                         "&:hover":{
                             cursor:"pointer",
-                            color:palette.primary.light,
+                            color:'#C70039',
                         },
                      }}
                     >
