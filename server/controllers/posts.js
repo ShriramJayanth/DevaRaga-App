@@ -12,8 +12,9 @@ export const createPost=async(req,res)=>{
         lastName:user.lastName,
         location:user.location,
         description,
-        userPicturePath:user.picturePath,
+        userPicturePath:user.picturepath,
         pictuePath,
+        musicdesc:user.musicalprofession,
         likes:{},
         comments:[]
       })
@@ -59,7 +60,7 @@ export const likePost= async(req,res)=>{
             post.likes.delete(userID);
         }
         else{
-            post.likes.set(userId,true);
+            post.likes.set(userID,true);
         }
         const updatedPost=await Post.findByIdAndUpdate(
             id,
