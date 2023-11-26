@@ -22,6 +22,7 @@ const registerSchema = yup.object().shape({
   email: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
   location: yup.string().required("required"),
+  MusicalProfession:yup.string().required("required"),
   occupation: yup.string().required("required"),
   picture: yup.string().required("required"),
 });
@@ -37,6 +38,7 @@ const initialValuesRegister = {
   email: "",
   password: "",
   location: "",
+  MusicalProfession:"",
   occupation: "",
   picture: "",
 };
@@ -64,7 +66,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://localhost:3003/auth/register",
+      "http://localhost:3001/auth/register",
       {
         method: "POST",
         body: formData,
@@ -79,7 +81,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3003/auth/login", {
+    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -152,16 +154,6 @@ const Form = () => {
                   sx={{ gridColumn: "span 2" }}
                 />
                 <TextField
-                  label="Musician"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.location}
-                  name="musicalprofession"
-                  error={Boolean(touched.location) && Boolean(errors.location)}
-                  helperText={touched.location && errors.location}
-                  sx={{ gridColumn: "span 4" }}
-                />
-                <TextField
                   label="Location"
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -169,6 +161,16 @@ const Form = () => {
                   name="location"
                   error={Boolean(touched.location) && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
+                  sx={{ gridColumn: "span 4" }}
+                />
+                <TextField
+                  label="MuiscalProfession"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.MusicalProfession}
+                  name="MusicalProfession"
+                  error={Boolean(touched.MusicalProfession) && Boolean(errors.MusicalProfession)}
+                  helperText={touched.MusicalProfession && errors.MusicalProfession}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <TextField

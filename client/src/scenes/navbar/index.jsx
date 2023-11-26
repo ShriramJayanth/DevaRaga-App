@@ -36,7 +36,7 @@ const Navbar = () => {
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;
-  const primaryLight = theme.palette.primary.light;
+  // const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
   const fullName = `${user.firstName}`;
@@ -47,11 +47,10 @@ const Navbar = () => {
         <Typography
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
-          color="#C70039"
+          color="primary"
           onClick={() => navigate("/home")}
           sx={{
             "&:hover": {
-              color: "black",
               cursor: "pointer",
             },
           }}

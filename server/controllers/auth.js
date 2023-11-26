@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/user.js";
+import User from "../models/User.js";
 
 /* REGISTER USER */
 export const register = async (req, res) => {
@@ -9,10 +9,10 @@ export const register = async (req, res) => {
       firstName,
       lastName,
       email,
-      musicalprofession,
       password,
       picturePath,
       friends,
+      MusicalProfession,
       location,
       occupation,
     } = req.body;
@@ -24,19 +24,20 @@ export const register = async (req, res) => {
       firstName,
       lastName,
       email,
-      musicalprofession,
       password: passwordHash,
       picturePath,
       friends,
+      MusicalProfession,
       location,
       occupation,
       viewedProfile: Math.floor(Math.random() * 10000),
       impressions: Math.floor(Math.random() * 10000),
     });
     const savedUser = await newUser.save();
-    res.status(201).json(newUser);
+    res.status(201).json(savedUser);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.log("\n\n\n"+email+"\n\n\n\n")
+    res.status(500).json({ error: email });
   }
 };
 
