@@ -4,6 +4,7 @@ import {
   LocationOnOutlined,
   WorkOutlineOutlined,
 } from "@mui/icons-material";
+import LibraryMusicOutlinedIcon from '@mui/icons-material/LibraryMusicOutlined';
 import { Box, Typography, Divider, useTheme } from "@mui/material";
 import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
@@ -86,9 +87,13 @@ const UserWidget = ({ userId, picturePath }) => {
           <LocationOnOutlined fontSize="large" sx={{ color: main }} />
           <Typography color={medium}>{location}</Typography>
         </Box>
-        <Box display="flex" alignItems="center" gap="1rem">
+        <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
           <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
           <Typography color={medium}>{occupation}</Typography>
+        </Box>
+        <Box display="flex" alignItems="center" gap="1rem">
+          <LibraryMusicOutlinedIcon fontSize="large" sx={{ color: main }} />
+          <Typography color={medium}>{MusicalProfession}</Typography>
         </Box>
       </Box>
 
